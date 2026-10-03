@@ -1,0 +1,2203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTRODUCCIÓN A LA KINESIOLOGÍA - Tejido Muscular, Nervioso y Biomecánica (Facultad de Cs. Médicas - UCCuyo)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f7f9f6;
+        }
+        /* Paleta Institucional UCCuyo (Verde Oliva) */
+        .text-accent { color: #436600; }
+        .bg-accent { background-color: #436600; }
+        .bg-accent-hover:hover { background-color: #324d00; }
+        .bg-accent-light { background-color: #f1f6eb; }
+        .border-accent { border-color: #436600; }
+
+        .text-primary { color: #436600; }
+        .bg-primary { background-color: #436600; }
+        .bg-primary-dark { background-color: #324d00; }
+        .border-primary { border-color: #436600; }
+
+        .focus-accent:focus {
+            border-color: #436600;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 102, 0, 0.2);
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .canvas-bg {
+            background: radial-gradient(circle at center, #ffffff 0%, #f4f7f0 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- Cabecera Institucional UCCuyo -->
+    <header class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-accent flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    K
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-gray-800 tracking-wide uppercase">INTRODUCCIÓN A LA KINESIOLOGÍA</h1>
+                    <p class="text-xs text-gray-500 font-semibold">Lic. en Kinesiología y Fisiatría (Facultad de Cs. Médicas - UCCuyo)</p>
+                </div>
+            </div>
+            
+            <!-- Botón Guía de Uso -->
+            <button onclick="openTutorial()" class="flex items-center gap-1.5 px-3 py-1.5 bg-accent text-white text-xs font-semibold rounded-lg shadow-sm hover:opacity-90 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Guía de Uso
+            </button>
+        </div>
+    </header>
+
+    <!-- Contenido Principal con Barra Lateral -->
+    <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 flex flex-col lg:flex-row gap-6">
+        
+        <!-- Menú de Navegación Lateral -->
+        <nav class="w-full lg:w-64 flex flex-row lg:flex-col gap-2 bg-white p-3 rounded-2xl shadow-sm border border-gray-100 overflow-x-auto lg:overflow-x-visible whitespace-nowrap lg:whitespace-normal sticky top-20 h-fit">
+            <button onclick="switchTab('tab-muscular')" id="btn-tab-muscular" class="bg-accent text-white flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-semibold transition shadow-sm">
+                1. Tejido Muscular
+            </button>
+            <button onclick="switchTab('tab-contraccion')" id="btn-tab-contraccion" class="text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition">
+                2. Dinámica de Contracción
+            </button>
+            <button onclick="switchTab('tab-nervioso')" id="btn-tab-nervioso" class="text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition">
+                3. Tejido Nervioso y Glía
+            </button>
+            <button onclick="switchTab('tab-sinapsis')" id="btn-tab-sinapsis" class="text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition">
+                4. Sinapsis e Impulso
+            </button>
+            <button onclick="switchTab('tab-casos-clinicos')" id="btn-tab-casos-clinicos" class="text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition">
+                5. Casos Kinesiológicos
+            </button>
+        </nav>
+
+        <!-- Contenedor Dinámico de Módulos -->
+        <div class="flex-1 space-y-6">
+
+            <!-- ==========================================
+                 MÓDULO 1: TEJIDO MUSCULAR Y FASCIAS
+                 ========================================== -->
+            <section id="tab-muscular" class="space-y-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-accent bg-accent-light px-2.5 py-1 rounded-md">Módulo 1</span>
+                            <h2 class="text-xl font-bold text-gray-800 mt-1">Tejido Muscular: Tipos, Propiedades y Fascias</h2>
+                        </div>
+                        <div class="text-xs text-gray-500 max-w-xs">
+                            Estudio morfofuncional de los tipos musculares, fascias conectivas y propiedades contráctiles.
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        El <strong>tejido muscular</strong> representa aproximadamente entre el 40% y 50% de la masa corporal total en el adulto y es el motor biológico del aparato locomotor. Cumple cuatro funciones esenciales: <strong>producción de movimientos corporales</strong>, <strong>estabilización de posiciones articulares y tono postural</strong>, <strong>almacenamiento y movilización de sustancias</strong> (esfínteres y peristaltismo), y <strong>termogénesis</strong> (generación de calor durante la contracción para mantener la temperatura corporal).
+                    </p>
+                </div>
+
+                <!-- Comparador Histológico Interactivo de Tipos Musculares -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-100 pb-3">
+                        <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-microscope text-accent"></i>
+                            Comparador Histológico: Los Tres Tipos Musculares
+                        </h3>
+                        <span id="muscle-type-pill" class="text-xs font-bold text-accent font-mono">
+                            Músculo Esquelético
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <button onclick="selectMuscleType('esqueletico')" id="btn-m-esqueletico" class="p-3.5 rounded-2xl border-2 text-left transition bg-accent-light border-accent shadow-sm">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-bold text-accent text-xs">Músculo Esquelético</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 bg-accent text-white rounded">Voluntario</span>
+                            </div>
+                            <p class="text-[11px] text-gray-600">Cilíndrico estriado, multinucleado periférico. Inserción ósea y tono postural.</p>
+                        </button>
+
+                        <button onclick="selectMuscleType('cardiaco')" id="btn-m-cardiaco" class="p-3.5 rounded-2xl border-2 text-left transition bg-white border-gray-200 hover:border-gray-300">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-bold text-gray-700 text-xs">Músculo Cardíaco</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 bg-gray-200 text-gray-700 rounded">Involuntario</span>
+                            </div>
+                            <p class="text-[11px] text-gray-600">Estriado apantallado, discos intercalares (uniones gap) y automatismo sinusal.</p>
+                        </button>
+
+                        <button onclick="selectMuscleType('liso')" id="btn-m-liso" class="p-3.5 rounded-2xl border-2 text-left transition bg-white border-gray-200 hover:border-gray-300">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-bold text-gray-700 text-xs">Músculo Liso</span>
+                                <span class="text-[10px] font-bold px-2 py-0.5 bg-gray-200 text-gray-700 rounded">Involuntario</span>
+                            </div>
+                            <p class="text-[11px] text-gray-600">Fusiforme no estriado, núcleo central. Vísceras huecas y vasos sanguíneos.</p>
+                        </button>
+                    </div>
+
+                    <!-- Canvas Histológico Muscular -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center pt-2">
+                        <div class="lg:col-span-7 flex flex-col items-center">
+                            <!-- Selector de Vista Muscular -->
+                            <div class="flex items-center justify-between w-full mb-2 bg-gray-100 p-1.5 rounded-xl border border-gray-200">
+                                <span class="text-[11px] font-bold text-gray-600 px-2 flex items-center gap-1">
+                                    <i class="ph-bold ph-eye text-accent"></i> Vista Anatómica:
+                                </span>
+                                <div class="flex gap-1">
+                                    <button onclick="setMuscleView('micro')" id="btn-view-micro" class="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-accent text-white shadow-xs transition">
+                                        Microscopía (Fibras)
+                                    </button>
+                                    <button onclick="setMuscleView('fascias')" id="btn-view-fascias" class="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-white text-gray-700 hover:bg-gray-200 transition border border-gray-200">
+                                        Corte de Fascias (Epi/Peri/Endo)
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="w-full relative rounded-2xl border border-gray-200 overflow-hidden shadow-inner canvas-bg p-2">
+                                <canvas id="canvas-musculo" width="520" height="260" class="w-full h-auto block"></canvas>
+                            </div>
+                            <span class="text-[11px] text-gray-400 mt-2 text-center">
+                                Esquema microscópico: estrías transversales (sarcómeros), disposición nuclear y uniones celulares.
+                            </span>
+                        </div>
+
+                        <div class="lg:col-span-5 space-y-3">
+                            <div id="muscle-detail-box" class="p-4 bg-gray-50 rounded-xl border border-gray-200 text-xs text-gray-700 space-y-2 leading-relaxed">
+                                <strong class="text-accent block text-sm">Músculo Esquelético:</strong>
+                                Se inserta en los huesos mediante tendones o aponeurosis para generar palancas articulares. Aunque su control es voluntario consciente vía corteza motora, también mantiene la postura y el tono muscular de forma inconsciente mediante reflejos propioceptivos medulares.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Propiedades Fisiológicas y Organización de Fascias -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Propiedades Fisiológicas -->
+                    <div class="p-5 bg-white rounded-2xl border border-gray-200 shadow-sm space-y-3">
+                        <h4 class="font-bold text-accent text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-bolt"></i> Cuatro Propiedades Fisiológicas Clave
+                        </h4>
+                        <div class="space-y-2 text-xs text-gray-600">
+                            <div class="p-2.5 bg-gray-50 rounded-xl border border-gray-200">
+                                <strong class="text-gray-800">1. Excitabilidad Eléctrica:</strong> Capacidad de recibir un estímulo químico (acetilcolina) y generar potenciales de acción propagados por el sarcolema.
+                            </div>
+                            <div class="p-2.5 bg-gray-50 rounded-xl border border-gray-200">
+                                <strong class="text-gray-800">2. Contractilidad:</strong> Capacidad del músculo de generar tensión activa y acortarse físicamente mediante el deslizamiento de actina y miosina.
+                            </div>
+                            <div class="p-2.5 bg-gray-50 rounded-xl border border-gray-200">
+                                <strong class="text-gray-800">3. Extensibilidad:</strong> Capacidad de elongarse sin sufrir desgarro tisular, fundamental en las técnicas de estiramiento kinesiológico.
+                            </div>
+                            <div class="p-2.5 bg-gray-50 rounded-xl border border-gray-200">
+                                <strong class="text-gray-800">4. Elasticidad:</strong> Capacidad de recuperar su longitud y forma de reposo original tras haber sido contraído o estirado.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Organización de Fascias -->
+                    <div class="p-5 bg-white rounded-2xl border border-gray-200 shadow-sm space-y-3">
+                        <h4 class="font-bold text-amber-700 text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-layer-group"></i> Fascias y Capas de Tejido Conectivo
+                        </h4>
+                        <div class="space-y-2 text-xs text-gray-600">
+                            <div class="p-2.5 bg-amber-50/60 rounded-xl border border-amber-200/80">
+                                <strong class="text-amber-900">Epimisio (Capa Externa):</strong> Capa de tejido conectivo denso inmodelado que envuelve al músculo completo, protegiéndolo de roces con músculos adyacentes.
+                            </div>
+                            <div class="p-2.5 bg-amber-50/60 rounded-xl border border-amber-200/80">
+                                <strong class="text-amber-900">Perimisio (Capa Intermedia):</strong> Rodea a grupos de 10 a 100 fibras musculares, delimitando fascículos individuales con su propia vascularización.
+                            </div>
+                            <div class="p-2.5 bg-amber-50/60 rounded-xl border border-amber-200/80">
+                                <strong class="text-amber-900">Endomisio (Capa Interna):</strong> Delicada lámina de fibras reticulares que envuelve a cada fibra muscular individual, donde capilares sanguíneos realizan el intercambio metabólico.
+                            </div>
+                            <div class="p-2.5 bg-gray-50 rounded-xl border border-gray-200 text-[11px]">
+                                Las tres capas se continúan en los extremos musculares para formar el <strong>tendón</strong> o la <strong>aponeurosis</strong> que transmite la fuerza al hueso.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 MÓDULO 2: DINÁMICA DE CONTRACCIÓN Y PALANCAS
+                 ========================================== -->
+            <section id="tab-contraccion" class="space-y-6 hidden">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-accent bg-accent-light px-2.5 py-1 rounded-md">Módulo 2</span>
+                            <h2 class="text-xl font-bold text-gray-800 mt-1">Dinámica de Contracción y Palancas Biomecánicas</h2>
+                        </div>
+                        <div class="text-xs text-gray-500 max-w-xs">
+                            Contracciones isotónicas (concéntricas/excéntricas) vs isométricas y su transmisión a palancas óseas.
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Durante el movimiento o el mantenimiento de la postura, la tensión muscular interactúa contra resistencias externas. Se distinguen contracciones <strong>isotónicas</strong> (donde la longitud del músculo varía mientras produce tensión para mover o frenar una carga) y contracciones <strong>isométricas</strong> (donde el músculo genera alta tensión activa sin modificar su longitud ni desplazar el ángulo articular).
+                    </p>
+                </div>
+
+                <!-- Simulador Biomecánico de Brazo y Contracción -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-100 pb-3">
+                        <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-dumbbell text-accent"></i>
+                            Simulador Biomecánico: Bíceps Braquial en Acción
+                        </h3>
+                        <span id="contr-mode-badge" class="px-2.5 py-1 rounded-md text-xs font-bold bg-accent-light text-accent">
+                            Isotónica Concéntrica (Acortamiento)
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <!-- Canvas Biomecánico del Brazo -->
+                        <div class="lg:col-span-7 flex flex-col items-center">
+                            <div class="w-full relative rounded-2xl border border-gray-200 overflow-hidden shadow-inner canvas-bg p-2">
+                                <canvas id="canvas-contraccion" width="520" height="280" class="w-full h-auto block"></canvas>
+                            </div>
+                            <span class="text-[11px] text-gray-400 mt-2 text-center">
+                                Modelo sagital del codo: fulcro articular (azul), potencia del bíceps (verde) y resistencia externa (ámbar).
+                            </span>
+                        </div>
+
+                        <!-- Panel de Controles -->
+                        <div class="lg:col-span-5 space-y-3">
+                            <div class="space-y-1.5">
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">Modo de Contracción:</label>
+                                <div class="grid grid-cols-1 gap-1.5">
+                                    <button onclick="setContractionMode('concentrica')" id="btn-c-concentrica" class="p-2.5 rounded-xl border-2 text-left font-bold text-xs transition bg-accent-light border-accent text-accent">
+                                        1. Concéntrica (Fuerza > Carga → Se acorta)
+                                    </button>
+                                    <button onclick="setContractionMode('excentrica')" id="btn-c-excentrica" class="p-2.5 rounded-xl border-2 text-left font-bold text-xs transition bg-white border-gray-200 text-gray-700 hover:border-gray-300">
+                                        2. Excéntrica (Carga > Fuerza → Se elonga bajo tensión)
+                                    </button>
+                                    <button onclick="setContractionMode('isometrica')" id="btn-c-isometrica" class="p-2.5 rounded-xl border-2 text-left font-bold text-xs transition bg-white border-gray-200 text-gray-700 hover:border-gray-300">
+                                        3. Isométrica (Fuerza = Carga → Longitud constante)
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2 pt-2 border-t border-gray-100">
+                                <div class="flex justify-between text-xs">
+                                    <span class="text-gray-600 font-medium">Carga en Mano (Resistencia):</span>
+                                    <span id="contr-load-val" class="font-bold text-accent font-mono">5 kg (49 N)</span>
+                                </div>
+                                <input type="range" id="slider-contr-load" min="2" max="15" value="5" oninput="updateContractionValues()" class="w-full accent-[#436600] cursor-pointer">
+                            </div>
+
+                            <!-- Ficha de Análisis Kinesiológico -->
+                            <div id="contr-analysis-card" class="p-4 bg-gray-50 rounded-xl border border-gray-200 text-xs text-gray-700 space-y-1 leading-relaxed">
+                                <strong class="text-accent block">Análisis Biomecánico:</strong>
+                                La tensión del bíceps braquial supera el torque resistente de la mancuerna, acortando las fibras musculares y flexionando el antebrazo. Es la acción que eleva la carga contra la gravedad.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Palancas Corporales -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-3">
+                    <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-scale-balanced text-accent"></i>
+                        Las Palancas Anatómicas en el Aparato Locomotor
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                        <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <span class="font-bold text-accent">1.º Género (Interapoyo):</span>
+                            <p class="text-gray-600">El fulcro articular está entre la potencia y la resistencia (ej. articulación atlanto-occipital manteniendo la cabeza erguida frente a la gravedad).</p>
+                        </div>
+                        <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <span class="font-bold text-accent">2.º Género (Interresistente):</span>
+                            <p class="text-gray-600">La resistencia está entre el fulcro y la potencia (ej. ponerse en puntas de pie sobre los metatarsos mediante el tríceps sural; gran ventaja de fuerza).</p>
+                        </div>
+                        <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <span class="font-bold text-accent">3.º Género (Interpotente):</span>
+                            <p class="text-gray-600">La potencia muscular se inserta entre el fulcro y la resistencia (ej. bíceps en el codo). Es la más común en el cuerpo humano; prioriza amplitud y velocidad de movimiento.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 MÓDULO 3: TEJIDO NERVIOSO Y GLÍA
+                 ========================================== -->
+            <section id="tab-nervioso" class="space-y-6 hidden">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-accent bg-accent-light px-2.5 py-1 rounded-md">Módulo 3</span>
+                            <h2 class="text-xl font-bold text-gray-800 mt-1">Arquitectura del Tejido Nervioso: Neuronas y Glía</h2>
+                        </div>
+                        <div class="text-xs text-gray-500 max-w-xs">
+                            Células excitables especializadas y red de neuroglía de sostén, nutrición y protección.
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        El <strong>tejido nervioso</strong> está formado por dos grandes poblaciones celulares: las <strong>neuronas</strong> (células altamente especializadas, con excitabilidad eléctrica para generar y conducir impulsos nerviosos, que pierden la capacidad de dividirse) y las <strong>células de la neuroglía o glía</strong> (células más abundantes, de menor tamaño, que sostienen, nutren, aíslan y defienden a las neuronas).
+                    </p>
+                </div>
+
+                <!-- Explorador de la Neurona en Canvas -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-100 pb-3">
+                        <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-brain text-accent"></i>
+                            Anatomía Funcional de la Neurona Motora
+                        </h3>
+                        <span id="neuron-part-title" class="text-xs font-bold text-accent font-mono">
+                            Soma / Cuerpo Celular
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <div class="lg:col-span-7 flex flex-col items-center">
+                            <div class="w-full relative rounded-2xl border border-gray-200 overflow-hidden shadow-inner canvas-bg p-2">
+                                <canvas id="canvas-neurona" width="520" height="260" class="w-full h-auto block"></canvas>
+                                <div class="mt-2 pt-2 border-t border-gray-200 flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex items-center gap-1.5 text-[11px] text-gray-600 font-semibold">
+                                        <i class="ph-bold ph-lightning text-amber-500"></i> Simulación Funcional:
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <button onclick="triggerActionPotential()" id="btn-ap-trigger" class="px-3 py-1 bg-accent hover:bg-accent-dark text-white text-[11px] font-bold rounded-lg shadow-xs flex items-center gap-1 transition">
+                                            <i class="ph-bold ph-play"></i> Propagar Impulso (Saltatorio)
+                                        </button>
+                                        <button onclick="toggleGliaView()" id="btn-glia-toggle" class="px-3 py-1 bg-white hover:bg-gray-100 text-gray-700 border border-gray-300 text-[11px] font-bold rounded-lg shadow-xs flex items-center gap-1 transition">
+                                            <i class="ph-bold ph-shield-check text-accent"></i> <span id="label-glia-btn">Mostrar Neuroglía</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-[11px] text-gray-400 mt-2 text-center">
+                                Esquema neuronal: dendritas receptoras, soma con corpúsculos de Nissl, cono axónico, axón mielinizado y teledendrón.
+                            </span>
+                        </div>
+
+                        <div class="lg:col-span-5 space-y-3">
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <button onclick="selectNeuronPart('soma')" id="btn-n-soma" class="p-2.5 rounded-xl border-2 text-left font-bold transition bg-accent-light border-accent text-accent">
+                                    Soma (Cuerpo)
+                                </button>
+                                <button onclick="selectNeuronPart('dendritas')" id="btn-n-dendritas" class="p-2.5 rounded-xl border-2 text-left font-bold transition bg-white border-gray-200 text-gray-700 hover:border-gray-300">
+                                    Dendritas
+                                </button>
+                                <button onclick="selectNeuronPart('axon')" id="btn-n-axon" class="p-2.5 rounded-xl border-2 text-left font-bold transition bg-white border-gray-200 text-gray-700 hover:border-gray-300">
+                                    Axón Conductor
+                                </button>
+                                <button onclick="selectNeuronPart('mielina')" id="btn-n-mielina" class="p-2.5 rounded-xl border-2 text-left font-bold transition bg-white border-gray-200 text-gray-700 hover:border-gray-300">
+                                    Vaina de Mielina
+                                </button>
+                            </div>
+
+                            <div id="neuron-detail-box" class="p-4 bg-gray-50 rounded-xl border border-gray-200 text-xs text-gray-700 space-y-1 leading-relaxed">
+                                <strong class="text-accent block">Soma o Pericarion:</strong>
+                                Contiene el núcleo y los orgánulos, incluyendo los corpúsculos de Nissl (retículo endoplásmico rugoso activo en síntesis de neurotransmisores y proteínas). Agrupados en el SNC constituyen la <strong>sustancia gris</strong>; fuera del SNC forman <strong>ganglios</strong>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Células de la Neuroglía -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-3">
+                    <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-nodes text-accent"></i>
+                        Células de la Neuroglía: Funciones Especializadas
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <strong class="text-accent block">Astrocitos (SNC):</strong>
+                            Células estrelladas que forman los pies vasculares de la <strong>barrera hematoencefálica (BHE)</strong>, regulan el potasio extracelular y nutren a las neuronas.
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <strong class="text-accent block">Oligodendrocitos (SNC):</strong>
+                            Emiten prolongaciones que envuelven axones de múltiples neuronas formando la mielina central (sustancia blanca).
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <strong class="text-accent block">Células de Schwann (SNP):</strong>
+                            Mielinizan un único axón periférico a la vez. Esenciales para la regeneración nerviosa tras lesiones traumáticas del plexo braquial o ciático.
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 space-y-1">
+                            <strong class="text-amber-700 block">Microglía (SNC):</strong>
+                            Macrófagos residentes del sistema nervioso; eliminan detritos celulares, microbios y tejidos dañados mediante fagocitosis.
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 space-y-1 sm:col-span-2">
+                            <strong class="text-amber-700 block">Células Ependimarias:</strong>
+                            Revisten los ventrículos cerebrales y el conducto central de la médula espinal. Producen y facilitan la circulación del líquido cefalorraquídeo (LCR).
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 MÓDULO 4: SINAPSIS E IMPULSO NERVIOSO
+                 ========================================== -->
+            <section id="tab-sinapsis" class="space-y-6 hidden">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-accent bg-accent-light px-2.5 py-1 rounded-md">Módulo 4</span>
+                            <h2 class="text-xl font-bold text-gray-800 mt-1">Estación de Sinapsis y Conducción del Impulso</h2>
+                        </div>
+                        <div class="text-xs text-gray-500 max-w-xs">
+                            Mecanismos de comunicación intercelular: sinapsis química (neurotransmisores) vs eléctrica (uniones gap).
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        La <strong>sinapsis</strong> es el sitio funcional de comunicación entre dos neuronas o entre una neurona y una célula efectora (fibra muscular o glándula). Permite la propagación coordinada del potencial de acción. Se clasifican fundamentalmente en <strong>sinapsis eléctricas</strong> y <strong>sinapsis químicas</strong>:
+                    </p>
+                </div>
+
+                <!-- Comparador y Canvas de Sinapsis -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-100 pb-3">
+                        <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-bolt-lightning text-accent"></i>
+                            Modelo de Transmisión Sináptica
+                        </h3>
+                        <div class="flex gap-2">
+                            <button onclick="setSynapseType('quimica')" id="btn-syn-quimica" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-accent text-white shadow-sm transition">
+                                Sinapsis Química (Placa Motora)
+                            </button>
+                            <button onclick="setSynapseType('electrica')" id="btn-syn-electrica" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-gray-100 text-gray-700 hover:bg-gray-200 transition">
+                                Sinapsis Eléctrica (Uniones Gap)
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <div class="lg:col-span-7 flex flex-col items-center">
+                            <div class="w-full relative rounded-2xl border border-gray-200 overflow-hidden shadow-inner canvas-bg p-2">
+                                <canvas id="canvas-sinapsis" width="520" height="280" class="w-full h-auto block"></canvas>
+                            </div>
+                            <span class="text-[11px] text-gray-400 mt-2 text-center">
+                                Detalle macromolecular: botón presináptico, vesículas sinápticas, hendidura y membrana postsináptica.
+                            </span>
+                        </div>
+
+                        <div class="lg:col-span-5 space-y-3">
+                            <div id="synapse-desc-box" class="p-4 bg-gray-50 rounded-xl border border-gray-200 text-xs text-gray-700 space-y-2 leading-relaxed">
+                                <strong class="text-accent block text-sm">Sinapsis Química (Placa Motora):</strong>
+                                <p>
+                                    El potencial de acción llega al terminal axonal provocando la apertura de canales de Ca²⁺ dependientes de voltaje. El influjo de calcio induce la exocitosis de vesículas de <strong>acetilcolina (ACh)</strong> hacia la hendidura sináptica (20 a 50 nm). La ACh se une a receptores nicotínicos en la placa motora muscular, despolarizándola y desencadenando la contracción muscular.
+                                </p>
+                            </div>
+
+                            <button onclick="triggerSynapseAnimation()" class="w-full py-2.5 px-4 bg-accent hover:bg-accent-hover text-white rounded-xl text-xs font-bold transition shadow-sm flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-play"></i> Disparar Impulso y Neurotransmisión
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla Comparativa -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="p-4 bg-white rounded-2xl border border-gray-200 space-y-2 shadow-sm">
+                        <span class="font-bold text-accent text-sm block">Sinapsis Química:</span>
+                        <ul class="space-y-1 text-gray-600 list-disc list-inside">
+                            <li>Espacio sináptico presente (20-50 nm).</li>
+                            <li>Mediadores: Neurotransmisores (Acetilcolina, GABA, Dopamina).</li>
+                            <li>Dirección: Estrictamente <strong>unidireccional</strong>.</li>
+                            <li>Velocidad: Presenta <strong>retardo sináptico</strong> (0.5 ms para difusión y unión a receptor).</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-white rounded-2xl border border-gray-200 space-y-2 shadow-sm">
+                        <span class="font-bold text-amber-700 text-sm block">Sinapsis Eléctrica:</span>
+                        <ul class="space-y-1 text-gray-600 list-disc list-inside">
+                            <li>Unión física estrecha mediante conexones (uniones hendidura/gap).</li>
+                            <li>Mediadores: Flujo directo de corriente iónica.</li>
+                            <li>Dirección: <strong>Bidireccional</strong>.</li>
+                            <li>Velocidad: <strong>Instantánea</strong>; sincroniza poblaciones celulares completas (músculo cardíaco y visceral).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 MÓDULO 5: CASOS CLÍNICOS Y KINESIOLÓGICOS
+                 ========================================== -->
+            <section id="tab-casos-clinicos" class="space-y-6 hidden">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-accent bg-accent-light px-2.5 py-1 rounded-md">Módulo 5</span>
+                            <h2 class="text-xl font-bold text-gray-800 mt-1">Razonamiento Kinesiológico y Neurofisiológico</h2>
+                        </div>
+                        <div class="text-xs text-gray-500 max-w-xs">
+                            Resolución de situaciones clínicas y biomecánicas reales en Kinesiología y Fisiatría.
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Seleccioná y analizá cada caso práctico interactivo para validar tu razonamiento sobre tipos de contracción, regeneración axonal, patología sináptica y propiedades musculares.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Caso 1 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-200 space-y-3">
+                        <div class="flex items-center gap-2 text-accent font-bold text-xs">
+                            <i class="fa-solid fa-person-falling-burst"></i>
+                            CASO 1: Rehabilitación de Tendinopatía Patelar
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-800">
+                            En un atleta con tendinopatía patelar (rodilla del saltador), ¿por qué el kinesiólogo prioriza el entrenamiento con contracciones excéntricas del cuádriceps?
+                        </h4>
+                        <div class="space-y-2 text-xs">
+                            <button onclick="checkCase(1, 'a')" id="c1-opt-a" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>A)</strong> Porque la contracción excéntrica genera altísima tensión mientras el músculo se alarga, estimulando la remodelación mecánica y alineación de las fibras de colágeno del tendón.
+                            </button>
+                            <button onclick="checkCase(1, 'b')" id="c1-opt-b" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>B)</strong> Porque la contracción excéntrica relaja por completo al músculo sin producir gasto de energía.
+                            </button>
+                            <button onclick="checkCase(1, 'c')" id="c1-opt-c" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>C)</strong> Para anular la llegada de potenciales de acción a la placa motora.
+                            </button>
+                        </div>
+                        <div id="c1-feedback" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+
+                    <!-- Caso 2 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-200 space-y-3">
+                        <div class="flex items-center gap-2 text-accent font-bold text-xs">
+                            <i class="fa-solid fa-user-injured"></i>
+                            CASO 2: Lesión del Nervio Peroneo Común
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-800">
+                            Tras una fractura de peroné con compresión del nervio peroneo, ¿qué célula de la neuroglía es vital para permitir la regeneración del axón mielinizado en el SNP?
+                        </h4>
+                        <div class="space-y-2 text-xs">
+                            <button onclick="checkCase(2, 'a')" id="c2-opt-a" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>A)</strong> La célula de Schwann, que forma un tubo de guía y regeneración sintetizando factores de crecimiento para que el axón periférico vuelva a inervar el tibial anterior.
+                            </button>
+                            <button onclick="checkCase(2, 'b')" id="c2-opt-b" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>B)</strong> El oligodendrocito, ya que regenera las fibras periféricas de las piernas.
+                            </button>
+                            <button onclick="checkCase(2, 'c')" id="c2-opt-c" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>C)</strong> El astrocito, produciendo una cicatriz ósea impenetrable.
+                            </button>
+                        </div>
+                        <div id="c2-feedback" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+
+                    <!-- Caso 3 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-200 space-y-3">
+                        <div class="flex items-center gap-2 text-accent font-bold text-xs">
+                            <i class="fa-solid fa-hospital-user"></i>
+                            CASO 3: Miastenia Gravis y Fatiga Muscular
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-800">
+                            La miastenia gravis es una enfermedad autoinmune donde anticuerpos bloquean los receptores nicotínicos de acetilcolina en la unión neuromuscular. ¿Qué manifestación funcional presentará el paciente en sesión kinésica?
+                        </h4>
+                        <div class="space-y-2 text-xs">
+                            <button onclick="checkCase(3, 'a')" id="c3-opt-a" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>A)</strong> Debilidad muscular progresiva y fatigabilidad rápida con la actividad repetitiva, ya que los potenciales postsinápticos no alcanzan el umbral contráctil.
+                            </button>
+                            <button onclick="checkCase(3, 'b')" id="c3-opt-b" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>B)</strong> Hipertrofia muscular acelerada por exceso de acetilcolina libre.
+                            </button>
+                            <button onclick="checkCase(3, 'c')" id="c3-opt-c" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>C)</strong> Pérdida de la extensibilidad en los ligamentos articulares exclusivamente.
+                            </button>
+                        </div>
+                        <div id="c3-feedback" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+
+                    <!-- Caso 4 -->
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-200 space-y-3">
+                        <div class="flex items-center gap-2 text-accent font-bold text-xs">
+                            <i class="fa-solid fa-person-walking"></i>
+                            CASO 4: Desgarro Fibrilar y Fascias Musculares
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-800">
+                            Durante un sprint, un futbolista sufre un desgarro en los isquiotibiales que compromete el perimisio. ¿Qué estructura anatómica ha sido lesionada primariamente?
+                        </h4>
+                        <div class="space-y-2 text-xs">
+                            <button onclick="checkCase(4, 'a')" id="c4-opt-a" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>A)</strong> La vaina conectiva intermedia que agrupa y rodea a los fascículos musculares, produciendo sangrado por ruptura de los vasos intramusculares que discurren en ella.
+                            </button>
+                            <button onclick="checkCase(4, 'b')" id="c4-opt-b" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>B)</strong> La membrana plasmática de una sola neurona sensitiva.
+                            </button>
+                            <button onclick="checkCase(4, 'c')" id="c4-opt-c" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-gray-50 transition">
+                                <strong>C)</strong> El disco intercalar del miocardio ventricular.
+                            </button>
+                        </div>
+                        <div id="c4-feedback" class="hidden p-3 rounded-xl text-xs font-medium"></div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Modal: Guía de Uso -->
+    <div id="modal-tutorial" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white max-w-3xl w-full rounded-2xl shadow-xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-accent p-4 text-white flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i class="ph-bold ph-graduation-cap text-xl"></i>
+                    <h3 class="font-bold text-base">Guía de Uso del Simulador y Orientación Pedagógica</h3>
+                </div>
+                <button onclick="closeTutorial()" class="text-white hover:text-gray-200 transition">
+                    <i class="ph-bold ph-x text-lg"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto space-y-5 text-xs md:text-sm text-gray-600 custom-scroll leading-relaxed">
+                <div>
+                    <h4 class="font-bold text-gray-800 text-sm mb-1 text-accent flex items-center gap-2">
+                        <i class="ph-bold ph-target"></i> 1. Propósito Tecnopedagógico
+                    </h4>
+                    <p>
+                        Este simulador interactivo está desarrollado especialmente para estudiantes del curso de ingreso a la <strong>Licenciatura en Kinesiología y Fisiatría (Facultad de Ciencias Médicas - Universidad Católica de Cuyo)</strong>. Su meta es integrar la histofisiología del <strong>tejido muscular</strong> (contracción muscular, fascias conectivas y palancas biomecánicas) con el <strong>tejido nervioso</strong> (arquitectura neuronal, poblaciones de la neuroglía y mecanismos de sinapsis química y eléctrica), sentando las bases morfofuncionales de la kinesiología clínica.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-gray-800 text-sm mb-2 text-accent flex items-center gap-2">
+                        <i class="ph-bold ph-compass"></i> 2. Guía Detallada de Módulos y Funcionalidades
+                    </h4>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <span class="font-bold text-gray-800 text-xs text-accent flex items-center gap-1.5">
+                                <i class="ph-bold ph-activity"></i> Módulo 1: Laboratorio de Tejido Muscular y Fascias
+                            </span>
+                            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+                                • <strong>Selector de Tipos Musculares:</strong> Alterná entre músculo <em>Esquelético</em> (cilíndrico multinucleado periférico con sarcómeros, bandas A e I y líneas Z), <em>Cardíaco</em> (fibras ramificadas con discos intercalares y núcleos centrales) y <em>Liso</em> (células fusiformes con cuerpos densos y contracción involuntaria).<br>
+                                • <strong>Conmutador de Vista Anatómica:</strong> Cambiá entre <em>Microscopía (Fibras)</em> y el <strong>Corte de Fascias (Epi/Peri/Endo)</strong> para apreciar la distribución tridimensional del epimisio, perimisio envolviendo fascículos, endomisio rodeando fibras individuales y el paquete neurovascular.<br>
+                                • <strong>Propiedades Fisiológicas:</strong> Repasá las 4 propiedades contráctiles clave (excitabilidad eléctrica, contractilidad, extensibilidad y elasticidad).
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <span class="font-bold text-gray-800 text-xs text-accent flex items-center gap-1.5">
+                                <i class="ph-bold ph-barbell"></i> Módulo 2: Dinámica de Contracción y Palancas Biomecánicas
+                            </span>
+                            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+                                • <strong>Modos de Contracción Muscular:</strong> Experimentá con contracciones <em>Isotónicas Concéntricas</em> (acortamiento activo con trabajo positivo +W), <em>Isotónicas Excéntricas</em> (elongación controlada bajo tensión de frenado con trabajo negativo -W) e <em>Isométricas</em> (longitud constante con alta vibración tensional y trabajo mecánico nulo W = 0 J).<br>
+                                • <strong>Simulador Biomecánico del Brazo:</strong> Variá la masa de la carga (1 a 25 kg) y observá la animación continua, el arco angular en tiempo real del codo (0° a 140°), y los vectores dinámicos de Potencia muscular (<span class="text-emerald-700 font-semibold">Fm</span>) y Resistencia gravitatoria (<span class="text-amber-700 font-semibold">R</span>).<br>
+                                • <strong>Palanca de 3.er Género (Interpotente):</strong> Análisis del punto de apoyo articular (tróclea), inserción del bíceps en el radio y brazo de palanca.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <span class="font-bold text-gray-800 text-xs text-accent flex items-center gap-1.5">
+                                <i class="ph-bold ph-tree-structure"></i> Módulo 3: Arquitectura Neuronal y Neuroglía
+                            </span>
+                            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+                                • <strong>Componentes de la Motoneurona:</strong> Seleccioná e inspeccioná el <em>Soma</em> con corpúsculos de Nissl (sustancia gris), <em>Dendritas</em> con espinas receptoras aferentes, <em>Axón y cono axónico</em> (zona gatillo eferente) y la <em>Vaina de mielina</em> con nodos de Ranvier.<br>
+                                • <strong>Disparador de Potencial de Acción:</strong> Activá la animación de <strong>conducción saltatoria</strong> para observar el avance de la despolarización iónica saltando de nodo en nodo a alta velocidad.<br>
+                                • <strong>Células Gliales (Superposición Interactiva):</strong> Habilitá la vista de <strong>Neuroglía</strong> para ver los astrocitos proyectando pedicelos hacia los capilares (Barrera Hematoencefálica), células de Schwann en el SNP y microglía fagocítica patrullera.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <span class="font-bold text-gray-800 text-xs text-accent flex items-center gap-1.5">
+                                <i class="ph-bold ph-lightning"></i> Módulo 4: Estación de Sinapsis e Impulso Nervioso
+                            </span>
+                            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+                                • <strong>Sinapsis Química (Placa Motora):</strong> Observá el botón terminal presináptico, los canales de Ca²⁺ voltaje-dependientes, las vesículas de acetilcolina (ACh) y los pliegues postsinápticos con receptores nAChR y canales de Na⁺.<br>
+                                • <strong>Simulación de Descarga Sináptica:</strong> Pulsá <em>"Estimular Impulso Nervioso"</em> para generar el influjo de Ca²⁺, la exocitosis vesicular y la difusión de partículas de ACh por la hendidura sináptica (20-50 nm).<br>
+                                • <strong>Sinapsis Eléctrica:</strong> Examiná las uniones comunicantes de tipo gap con conexones proteicos para el paso iónico bidireccional instantáneo sin retardo químico.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <span class="font-bold text-gray-800 text-xs text-accent flex items-center gap-1.5">
+                                <i class="ph-bold ph-stethoscope"></i> Módulo 5: Casos Clínicos Kinesiológicos Aplicados
+                            </span>
+                            <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+                                • <strong>Aplicación Profesional Directa:</strong> Analizá y resolvé casos kinesiológicos sobre contracciones excéntricas en rehabilitación tendinosa, mielinización y regeneración nerviosa periférica por células de Schwann en ciatalgias, y afección de la unión neuromuscular en miastenia gravis con retroalimentación formativa inmediata.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-gray-800 text-sm mb-1 text-accent flex items-center gap-2">
+                        <i class="ph-bold ph-check-circle"></i> 3. Metodología de Exploración Libre y Formativa
+                    </h4>
+                    <p>
+                        El entorno está diseñado bajo el principio de <strong>aprendizaje activo universitario</strong> sin penalizaciones numéricas ni bloqueos restrictivos. Podés interactuar, cambiar parámetros físicos y reintentar las evaluaciones tantas veces como lo necesites para afianzar tus competencias formativas en Kinesiología.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 px-6 py-3 border-t border-gray-200 flex justify-end">
+                <button onclick="closeTutorial()" class="px-4 py-2 bg-accent hover:bg-accent-dark text-white rounded-xl text-xs font-semibold transition shadow-sm">
+                    Entendido, comenzar exploración
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white border-t border-gray-200 py-4 text-center text-xs text-gray-500 mt-12">
+        <p>Desarrollado por vesalio - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- Lógica de la Aplicación en JavaScript -->
+    <script>
+        // Estado global de la aplicación
+        let currentTab = 'tab-musculo';
+        let currentMuscleType = 'esqueletico';
+        let muscleViewMode = 'micro'; // 'micro' o 'fascias'
+        let currentContractionMode = 'concentrica';
+        let currentNeuronPart = 'soma';
+        let showGliaOverlay = false;
+        let actionPotentialActive = false;
+        let apProgress = 0; // 0 to 1
+        let currentSynapseType = 'quimica';
+        let synapseAnimating = false;
+        let synapseStep = 0; // 0: reposo, 1: despolarizacion, 2: Ca2+, 3: exocitosis, 4: difusion/apertura
+        let synapseParticles = [];
+
+        // Animación continua para biomecánica y sinapsis
+        let animClock = 0;
+        function animationLoop() {
+            animClock += 0.035;
+
+            // Si estamos en la pestaña de contracción, redibujamos para suavidad dinámica y vibración isométrica
+            if (currentTab === 'tab-contraccion') {
+                drawContraccionCanvas();
+            }
+
+            // Si el potencial de acción está activo, avanzarlo
+            if (actionPotentialActive) {
+                apProgress += 0.025;
+                if (apProgress > 1.15) {
+                    actionPotentialActive = false;
+                    apProgress = 0;
+                    const btn = document.getElementById('btn-ap-trigger');
+                    if (btn) btn.innerHTML = '<i class="ph-bold ph-play"></i> Propagar Impulso (Saltatorio)';
+                }
+                if (currentTab === 'tab-nervioso') {
+                    drawNeuronaCanvas();
+                }
+            }
+
+            // Si la sinapsis está animando
+            if (synapseAnimating && currentTab === 'tab-sinapsis') {
+                updateAndDrawSynapseParticles();
+            }
+
+            requestAnimationFrame(animationLoop);
+        }
+
+        // =================================================================
+        // NAVEGACIÓN ENTRE MÓDULOS
+        // =================================================================
+        function switchTab(tabId) {
+            currentTab = tabId;
+            const tabIds = [
+                'tab-muscular',
+                'tab-contraccion',
+                'tab-nervioso',
+                'tab-sinapsis',
+                'tab-casos-clinicos'
+            ];
+
+            tabIds.forEach(id => {
+                const el = document.getElementById(id);
+                const btn = document.getElementById('btn-' + id);
+                if (!el) return;
+
+                if (id === tabId) {
+                    el.classList.remove('hidden');
+                    if (btn) {
+                        btn.className = 'bg-accent text-white flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-semibold transition shadow-sm';
+                    }
+                } else {
+                    el.classList.add('hidden');
+                    if (btn) {
+                        btn.className = 'text-gray-700 hover:bg-gray-100 flex-1 lg:flex-none text-left py-2.5 px-4 rounded-xl text-sm font-medium transition';
+                    }
+                }
+            });
+
+            // Redibujar el canvas correspondiente tras visibilidad
+            setTimeout(() => {
+                if (tabId === 'tab-muscular') drawMusculoCanvas();
+                if (tabId === 'tab-contraccion') drawContraccionCanvas();
+                if (tabId === 'tab-nervioso') drawNeuronaCanvas();
+                if (tabId === 'tab-sinapsis') drawSinapsisCanvas();
+            }, 50);
+        }
+
+        function openTutorial() {
+            document.getElementById('modal-tutorial').classList.remove('hidden');
+        }
+
+        function closeTutorial() {
+            document.getElementById('modal-tutorial').classList.add('hidden');
+        }
+
+        // =================================================================
+        // MÓDULO 1: TEJIDO MUSCULAR Y FASCIAS
+        // =================================================================
+        function setMuscleView(view) {
+            muscleViewMode = view;
+            const btnM = document.getElementById('btn-view-micro');
+            const btnF = document.getElementById('btn-view-fascias');
+            if (btnM && btnF) {
+                if (view === 'micro') {
+                    btnM.className = 'px-2.5 py-1 text-[11px] font-bold rounded-lg bg-accent text-white shadow-xs transition';
+                    btnF.className = 'px-2.5 py-1 text-[11px] font-bold rounded-lg bg-white text-gray-700 hover:bg-gray-200 transition border border-gray-200';
+                } else {
+                    btnF.className = 'px-2.5 py-1 text-[11px] font-bold rounded-lg bg-accent text-white shadow-xs transition';
+                    btnM.className = 'px-2.5 py-1 text-[11px] font-bold rounded-lg bg-white text-gray-700 hover:bg-gray-200 transition border border-gray-200';
+                }
+            }
+            drawMusculoCanvas();
+        }
+
+        function selectMuscleType(type) {
+            currentMuscleType = type;
+            ['esqueletico', 'cardiaco', 'liso'].forEach(t => {
+                const btn = document.getElementById(`btn-m-${t}`);
+                if (btn) {
+                    if (t === type) {
+                        btn.className = 'p-3.5 rounded-2xl border-2 text-left transition bg-accent-light border-accent shadow-sm';
+                        const s1 = btn.querySelector('span:first-child');
+                        const s2 = btn.querySelector('span:last-child');
+                        if (s1) s1.className = 'font-bold text-accent text-xs';
+                        if (s2) s2.className = 'text-[10px] font-bold px-2 py-0.5 bg-accent text-white rounded';
+                    } else {
+                        btn.className = 'p-3.5 rounded-2xl border-2 text-left transition bg-white border-gray-200 hover:border-gray-300';
+                        const s1 = btn.querySelector('span:first-child');
+                        const s2 = btn.querySelector('span:last-child');
+                        if (s1) s1.className = 'font-bold text-gray-700 text-xs';
+                        if (s2) s2.className = 'text-[10px] font-bold px-2 py-0.5 bg-gray-200 text-gray-700 rounded';
+                    }
+                }
+            });
+
+            const pill = document.getElementById('muscle-type-pill');
+            const box = document.getElementById('muscle-detail-box');
+
+            if (type === 'esqueletico') {
+                if (pill) pill.textContent = 'Músculo Esquelético';
+                if (box) box.innerHTML = `<strong class="text-accent block text-sm">Músculo Esquelético (Estriado Voluntario):</strong>
+                Formado por fibras multinucleadas periféricas muy largas dispuestas en haces paralelos cilíndricos. Presenta sarcómeros altamente alineados con bandas A (oscuras, miosina/actina) y bandas I (claras, actina). Está gobernado por motoneuronas somáticas y envuelto por las 3 capas de fascias conectivas (epimisio, perimisio y endomisio).`;
+            } else if (type === 'cardiaco') {
+                if (pill) pill.textContent = 'Músculo Cardíaco (Miocardio)';
+                if (box) box.innerHTML = `<strong class="text-accent block text-sm">Músculo Cardíaco (Estriado Involuntario):</strong>
+                Fibras ramificadas apantalladas con 1 o 2 núcleos centrales ovoides. Se unen mediante <strong>discos intercalares</strong> con desmosomas de adhesión mecánica y uniones comunicantes de tipo gap (conexones), lo que asegura una sincronización electroquímica instantánea del miocardio bajo su propio marcapasos autonómico.`;
+            } else {
+                if (pill) pill.textContent = 'Músculo Liso (Visceral)';
+                if (box) box.innerHTML = `<strong class="text-accent block text-sm">Músculo Liso (No Estriado Involuntario):</strong>
+                Células fusiformes alargadas con extremos aguzados y un solo núcleo central en forma de tabaco/espiral. No posee sarcómeros estriados alineados; los filamentos contráctiles se anclan a <strong>cuerpos densos</strong> citoplasmáticos. Se localiza en vísceras huecas (tubo digestivo, uréteres) y paredes vasculares.`;
+            }
+
+            drawMusculoCanvas();
+        }
+
+        function drawMusculoCanvas() {
+            const canvas = document.getElementById('canvas-musculo');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            // Fondo sutil con rejilla histológica
+            ctx.fillStyle = '#f8fafc';
+            ctx.fillRect(0, 0, w, h);
+
+            if (muscleViewMode === 'fascias') {
+                drawFasciaCrossSection(ctx, w, h);
+                return;
+            }
+
+            if (currentMuscleType === 'esqueletico') {
+                // Dibujo de 3 fibras cilíndricas paralelas con estrías nítidas, bandas A e I, y núcleos periféricos
+                for (let i = 0; i < 3; i++) {
+                    const y = 30 + i * 68;
+                    const fiberH = 52;
+
+                    // Vaina de sarcolema / endomisio exterior
+                    ctx.fillStyle = '#fde8e8';
+                    ctx.strokeStyle = '#e02424';
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.roundRect(35, y, w - 70, fiberH, 4);
+                    ctx.fill();
+                    ctx.stroke();
+
+                    // Bandas I (claras) y Bandas A (oscuras) con líneas Z centrales
+                    const step = 22;
+                    for (let x = 45; x < w - 45; x += step) {
+                        // Banda A (oscura)
+                        ctx.fillStyle = '#f8b4b4';
+                        ctx.fillRect(x + 5, y + 2, 11, fiberH - 4);
+
+                        // Línea Z (delgada y nítida en el centro de la banda clara)
+                        ctx.strokeStyle = '#991b1b';
+                        ctx.lineWidth = 1.8;
+                        ctx.beginPath();
+                        ctx.moveTo(x, y + 3);
+                        ctx.lineTo(x, y + fiberH - 3);
+                        ctx.stroke();
+                    }
+
+                    // Línea M central en bandas oscuras
+                    ctx.strokeStyle = '#771d1d';
+                    ctx.lineWidth = 0.8;
+                    for (let x = 45; x < w - 45; x += step) {
+                        ctx.beginPath();
+                        ctx.moveTo(x + 10.5, y + 4);
+                        ctx.lineTo(x + 10.5, y + fiberH - 4);
+                        ctx.stroke();
+                    }
+
+                    // Núcleos periféricos aplanados contra el sarcolema (basófilos morados oscuros)
+                    ctx.fillStyle = '#581c87';
+                    ctx.strokeStyle = '#3b0764';
+                    ctx.lineWidth = 1;
+
+                    // Núcleo superior
+                    ctx.beginPath();
+                    ctx.ellipse(90 + i * 40, y + 4, 16, 5, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+
+                    // Núcleo inferior
+                    ctx.beginPath();
+                    ctx.ellipse(320 - i * 30, y + fiberH - 4, 16, 5, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+
+                    // Endomisio envolvente (fino tejido conectivo laxo con microvasos)
+                    ctx.fillStyle = '#ef4444';
+                    ctx.beginPath();
+                    ctx.arc(200 + i * 50, y - 4, 2.5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // Referencias y leyenda pedagógica
+                ctx.fillStyle = '#334155';
+                ctx.font = 'bold 11px Outfit, sans-serif';
+                ctx.textAlign = 'left';
+                ctx.fillText('Fibras Cilíndricas Estriadas Multinucleadas Periféricas', 35, 20);
+
+                ctx.font = '10px Outfit, sans-serif';
+                ctx.fillStyle = '#64748b';
+                ctx.fillText('Línea Z | Banda I (clara) | Banda A (oscura con miosina) | Núcleo periférico', 35, h - 12);
+
+            } else if (currentMuscleType === 'cardiaco') {
+                // Fibras musculares ramificadas con discos intercalares y núcleos centrales
+                ctx.fillStyle = '#fce7f3';
+                ctx.strokeStyle = '#db2777';
+                ctx.lineWidth = 1.5;
+
+                // Tronco izquierdo
+                ctx.beginPath();
+                ctx.roundRect(35, 60, 160, 48, 4);
+                ctx.fill();
+                ctx.stroke();
+
+                // Ramificación superior
+                ctx.beginPath();
+                ctx.moveTo(195, 60);
+                ctx.bezierCurveTo(230, 40, 250, 35, 300, 35);
+                ctx.lineTo(w - 35, 35);
+                ctx.lineTo(w - 35, 75);
+                ctx.lineTo(290, 75);
+                ctx.bezierCurveTo(240, 75, 220, 80, 195, 84);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                // Ramificación inferior
+                ctx.beginPath();
+                ctx.moveTo(195, 84);
+                ctx.bezierCurveTo(220, 90, 240, 115, 290, 115);
+                ctx.lineTo(w - 35, 115);
+                ctx.lineTo(w - 35, 155);
+                ctx.lineTo(300, 155);
+                ctx.bezierCurveTo(250, 155, 230, 110, 195, 108);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                // Fibra paralela inferior
+                ctx.beginPath();
+                ctx.roundRect(35, 170, w - 70, 48, 4);
+                ctx.fill();
+                ctx.stroke();
+
+                // Estrías transversales sutiles
+                ctx.strokeStyle = '#f472b6';
+                ctx.lineWidth = 1;
+                for (let x = 45; x < 185; x += 14) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 62);
+                    ctx.lineTo(x, 106);
+                    ctx.stroke();
+                }
+                for (let x = 45; x < w - 45; x += 14) {
+                    ctx.beginPath();
+                    ctx.moveTo(x, 172);
+                    ctx.lineTo(x, 216);
+                    ctx.stroke();
+                }
+
+                // DISCOS INTERCALARES (Bandas oscuras escaleriformes cruciales)
+                ctx.strokeStyle = '#831843';
+                ctx.lineWidth = 4;
+                ctx.lineCap = 'round';
+
+                // Disco 1
+                ctx.beginPath();
+                ctx.moveTo(125, 62);
+                ctx.lineTo(125, 80);
+                ctx.lineTo(130, 80);
+                ctx.lineTo(130, 106);
+                ctx.stroke();
+
+                // Disco 2 en rama superior
+                ctx.beginPath();
+                ctx.moveTo(370, 37);
+                ctx.lineTo(370, 73);
+                ctx.stroke();
+
+                // Disco 3 en rama inferior
+                ctx.beginPath();
+                ctx.moveTo(390, 117);
+                ctx.lineTo(390, 153);
+                ctx.stroke();
+
+                // Disco 4 fibra inferior
+                ctx.beginPath();
+                ctx.moveTo(260, 172);
+                ctx.lineTo(260, 192);
+                ctx.lineTo(265, 192);
+                ctx.lineTo(265, 216);
+                ctx.stroke();
+
+                // Núcleos centrales ovoides prominentes (morado con halo claro)
+                ctx.fillStyle = '#581c87';
+                ctx.beginPath();
+                ctx.ellipse(80, 84, 11, 7, 0, 0, Math.PI * 2);
+                ctx.ellipse(340, 55, 10, 6, 0, 0, Math.PI * 2);
+                ctx.ellipse(340, 135, 10, 6, 0, 0, Math.PI * 2);
+                ctx.ellipse(150, 194, 11, 7, 0, 0, Math.PI * 2);
+                ctx.ellipse(390, 194, 11, 7, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Leyenda pedagógica
+                ctx.fillStyle = '#334155';
+                ctx.font = 'bold 11px Outfit, sans-serif';
+                ctx.textAlign = 'left';
+                ctx.fillText('Fibras Ramificadas Anastomosadas con Núcleo Central', 35, 20);
+
+                ctx.font = '10px Outfit, sans-serif';
+                ctx.fillStyle = '#be185d';
+                ctx.fillText('Discos Intercalares (desmosomas mecánicos + uniones gap sincronizantes)', 35, h - 12);
+
+            } else {
+                // Músculo Liso: Células fusiformes aguzadas superpuestas con núcleo central alargado
+                ctx.fillStyle = '#ffedd5';
+                ctx.strokeStyle = '#ea580c';
+                ctx.lineWidth = 1.2;
+
+                const smoothCells = [
+                    { x: 30, y: 40, len: 210, w: 22 },
+                    { x: 190, y: 35, len: 220, w: 20 },
+                    { x: 70, y: 75, len: 230, w: 24 },
+                    { x: 260, y: 70, len: 210, w: 22 },
+                    { x: 40, y: 115, len: 220, w: 22 },
+                    { x: 220, y: 110, len: 225, w: 24 },
+                    { x: 80, y: 155, len: 220, w: 22 },
+                    { x: 250, y: 150, len: 215, w: 20 },
+                    { x: 50, y: 195, len: 230, w: 20 },
+                    { x: 230, y: 190, len: 210, w: 22 }
+                ];
+
+                smoothCells.forEach(c => {
+                    ctx.fillStyle = '#ffedd5';
+                    ctx.beginPath();
+                    ctx.moveTo(c.x, c.y);
+                    ctx.quadraticCurveTo(c.x + c.len / 2, c.y - c.w, c.x + c.len, c.y);
+                    ctx.quadraticCurveTo(c.x + c.len / 2, c.y + c.w, c.x, c.y);
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.stroke();
+
+                    // Cuerpos densos citoplasmáticos (anclaje de actina y filamentos intermedios)
+                    ctx.fillStyle = '#9a3412';
+                    for (let d = -2; d <= 2; d++) {
+                        if (d !== 0) {
+                            ctx.beginPath();
+                            ctx.arc(c.x + c.len / 2 + d * 30, c.y + (d % 2 === 0 ? 4 : -4), 1.8, 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+                    }
+
+                    // Núcleo central fusiforme alargado (forma de cigarro)
+                    ctx.fillStyle = '#4c1d95';
+                    ctx.beginPath();
+                    ctx.ellipse(c.x + c.len / 2, c.y, 14, 4.5, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                ctx.fillStyle = '#334155';
+                ctx.font = 'bold 11px Outfit, sans-serif';
+                ctx.textAlign = 'left';
+                ctx.fillText('Células Musculares Fusiformes No Estriadas (Paredes Viscerales)', 35, 20);
+
+                ctx.font = '10px Outfit, sans-serif';
+                ctx.fillStyle = '#c2410c';
+                ctx.fillText('Núcleo central único alargado | Cuerpos densos de anclaje | Movimiento peristáltico involuntario', 35, h - 12);
+            }
+        }
+
+        // Vista de corte transversal de las capas fasciales (Epimisio, Perimisio, Endomisio)
+        function drawFasciaCrossSection(ctx, w, h) {
+            const cx = w / 2;
+            const cy = h / 2 - 5;
+
+            // 1. EPIMISIO: Vaina de tejido conectivo denso externa que envuelve el músculo completo
+            ctx.fillStyle = '#f1f5f9';
+            ctx.strokeStyle = '#436600';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.ellipse(cx, cy, 210, 105, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Etiqueta Epimisio
+            ctx.fillStyle = '#436600';
+            ctx.font = 'bold 11px Outfit, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('EPIMISIO (Fascia externa de tejido conectivo denso irregular)', cx, 22);
+
+            // 2. PERIMISIO: Rodea los fascículos musculares
+            const fascicles = [
+                { x: cx - 110, y: cy - 35, rx: 50, ry: 38 },
+                { x: cx, y: cy - 42, rx: 48, ry: 36 },
+                { x: cx + 110, y: cy - 35, rx: 50, ry: 38 },
+                { x: cx - 60, y: cy + 35, rx: 52, ry: 38 },
+                { x: cx + 60, y: cy + 35, rx: 52, ry: 38 }
+            ];
+
+            fascicles.forEach((f, idx) => {
+                // Borde del fascículo (Perimisio)
+                ctx.fillStyle = '#fee2e2';
+                ctx.strokeStyle = '#dc2626';
+                ctx.lineWidth = 2.2;
+                ctx.beginPath();
+                ctx.ellipse(f.x, f.y, f.rx, f.ry, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+
+                // Fibras musculares individuales en corte transversal dentro del fascículo
+                for (let angle = 0; angle < Math.PI * 2; angle += 0.7) {
+                    const fx = f.x + (f.rx - 16) * Math.cos(angle);
+                    const fy = f.y + (f.ry - 12) * Math.sin(angle);
+                    // Endomisio rodeando cada fibra
+                    ctx.fillStyle = '#f87171';
+                    ctx.strokeStyle = '#b91c1c';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.arc(fx, fy, 6.5, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+
+                    // Núcleo periférico de la fibra individual
+                    ctx.fillStyle = '#4c1d95';
+                    ctx.beginPath();
+                    ctx.arc(fx + 3, fy - 2, 1.8, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // Fibras centrales del fascículo
+                for (let k = -1; k <= 1; k++) {
+                    ctx.fillStyle = '#f87171';
+                    ctx.beginPath();
+                    ctx.arc(f.x + k * 12, f.y, 6.5, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+                }
+            });
+
+            // Vasos sanguíneos y nervio (Paquete neurovascular entre fascículos)
+            // Arteria (rojo)
+            ctx.fillStyle = '#ef4444';
+            ctx.strokeStyle = '#991b1b';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.arc(cx - 5, cy, 5.5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Vena (azul)
+            ctx.fillStyle = '#3b82f6';
+            ctx.strokeStyle = '#1e40af';
+            ctx.beginPath();
+            ctx.arc(cx + 8, cy - 2, 6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Nervio motor (amarillo)
+            ctx.fillStyle = '#eab308';
+            ctx.strokeStyle = '#854d0e';
+            ctx.beginPath();
+            ctx.arc(cx + 2, cy + 9, 4.5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Rótulos pedagógicos inferiores
+            ctx.fillStyle = '#334155';
+            ctx.font = '10px Outfit, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('PERIMISIO (envuelve cada Fascículo) | ENDOMISIO (envuelve cada Fibra) | Paquete Neurovascular', cx, h - 12);
+        }
+
+        // =================================================================
+        // MÓDULO 2: DINÁMICA DE CONTRACCIÓN Y BIOMECÁNICA
+        // =================================================================
+        function setContractionMode(mode) {
+            currentContractionMode = mode;
+            ['concentrica', 'excentrica', 'isometrica'].forEach(m => {
+                const btn = document.getElementById(`btn-c-${m}`);
+                if (btn) {
+                    if (m === mode) {
+                        btn.className = 'p-3 rounded-xl border-2 text-left transition bg-accent-light border-accent';
+                        const s = btn.querySelector('span:first-child');
+                        if (s) s.className = 'font-bold text-accent text-xs block';
+                    } else {
+                        btn.className = 'p-3 rounded-xl border-2 text-left transition bg-white border-gray-200 hover:border-gray-300';
+                        const s = btn.querySelector('span:first-child');
+                        if (s) s.className = 'font-bold text-gray-700 text-xs block';
+                    }
+                }
+            });
+
+            updateContractionValues();
+        }
+
+        function updateContractionValues() {
+            const slider = document.getElementById('slider-contr-load');
+            const loadKg = slider ? parseFloat(slider.value) : 10;
+            const loadN = (loadKg * 9.8).toFixed(1);
+            const loadValEl = document.getElementById('contr-load-val');
+            if (loadValEl) loadValEl.textContent = `${loadKg} kg (${loadN} N)`;
+
+            const typeEl = document.getElementById('contr-type-text');
+            const fiberEl = document.getElementById('contr-fiber-state');
+            const workEl = document.getElementById('contr-work-calc');
+
+            if (currentContractionMode === 'concentrica') {
+                if (typeEl) typeEl.textContent = 'Isotónica Concéntrica';
+                if (fiberEl) fiberEl.textContent = 'Acortamiento activo (Vientre abultado)';
+                const workJ = (loadKg * 9.8 * 0.35).toFixed(1);
+                if (workEl) workEl.textContent = `Positivo (+W = ${workJ} J)`;
+            } else if (currentContractionMode === 'excentrica') {
+                if (typeEl) typeEl.textContent = 'Isotónica Excéntrica';
+                if (fiberEl) fiberEl.textContent = 'Alargamiento bajo tensión (Frenado motor)';
+                const workJ = (loadKg * 9.8 * 0.35).toFixed(1);
+                if (workEl) workEl.textContent = `Negativo (-W = -${workJ} J, absorbe energía)`;
+            } else {
+                if (typeEl) typeEl.textContent = 'Isométrica (Estática)';
+                if (fiberEl) fiberEl.textContent = 'Longitud constante (Tensión interna elevada)';
+                if (workEl) workEl.textContent = 'Nulo (W = F · 0 = 0 J mecánico)';
+            }
+
+            drawContraccionCanvas();
+        }
+
+        function drawContraccionCanvas() {
+            const canvas = document.getElementById('canvas-contraccion');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            const slider = document.getElementById('slider-contr-load');
+            const loadKg = slider ? parseFloat(slider.value) : 10;
+            const loadN = loadKg * 9.8;
+
+            // Fulcro articular anatómico (Codo - Tróclea humeral)
+            const elbowX = 150;
+            const elbowY = 175;
+
+            // Húmero vertical anatómico (Brazo fijo)
+            ctx.strokeStyle = '#cbd5e1';
+            ctx.lineWidth = 20;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(elbowX, 35);
+            ctx.lineTo(elbowX, elbowY);
+            ctx.stroke();
+
+            // Detalle cabeza humeral
+            ctx.fillStyle = '#94a3b8';
+            ctx.beginPath();
+            ctx.arc(elbowX, 35, 14, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Ángulo articular del antebrazo según el tipo de contracción
+            let targetAngleDeg = 0; // 0 = horizontal (90° flexión con húmero)
+            let bicepBulge = 18;
+            let isometricVibration = 0;
+
+            if (currentContractionMode === 'concentrica') {
+                // Dinámica suave oscilatoria en flexión concéntrica
+                const osc = Math.sin(animClock * 2.5) * 6;
+                targetAngleDeg = -42 + osc; // Flexionado hacia arriba (~48° del codo)
+                bicepBulge = 28 + (loadKg / 25) * 8; // Abultamiento acortado
+            } else if (currentContractionMode === 'excentrica') {
+                const osc = Math.sin(animClock * 1.8) * 4;
+                targetAngleDeg = 36 + osc; // Extendido hacia abajo (~126° del codo)
+                bicepBulge = 11 + (loadKg / 25) * 4; // Adelgazado y estirado bajo carga
+            } else {
+                // Isométrica: Rigidez estática con micro-vibración fisiológica proporcional a la carga
+                targetAngleDeg = 0;
+                isometricVibration = (Math.sin(animClock * 24) * 0.8) * (loadKg / 15);
+                bicepBulge = 20 + (loadKg / 25) * 6;
+            }
+
+            const currentAngleDeg = targetAngleDeg + isometricVibration;
+            const angleRad = currentAngleDeg * (Math.PI / 180);
+            const forearmLen = 210;
+            const handX = elbowX + forearmLen * Math.cos(angleRad);
+            const handY = elbowY + forearmLen * Math.sin(angleRad);
+
+            // Antebrazo (Radio y Cúbito anatómicos)
+            ctx.strokeStyle = '#94a3b8';
+            ctx.lineWidth = 14;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(elbowX, elbowY);
+            ctx.lineTo(handX, handY);
+            ctx.stroke();
+
+            // Radio (segundo hueso paralelo sutil)
+            ctx.strokeStyle = '#64748b';
+            ctx.lineWidth = 6;
+            ctx.beginPath();
+            ctx.moveTo(elbowX, elbowY - 4);
+            ctx.lineTo(handX, handY - 4);
+            ctx.stroke();
+
+            // FULCRO ARTICULAR (Eje de rotación tróclea codo - Azul)
+            ctx.fillStyle = '#2563eb';
+            ctx.strokeStyle = '#1d4ed8';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(elbowX, elbowY, 11, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Inserción distal del bíceps (Tuberosidad bicipital del radio, d_potencia = ~38px)
+            const insertDist = 42;
+            const bicepInsertX = elbowX + insertDist * Math.cos(angleRad);
+            const bicepInsertY = elbowY + insertDist * Math.sin(angleRad);
+
+            // Origen proximal del bíceps (Escápula / Apófisis coracoides y rodete glenoideo)
+            const bicepOriginX = elbowX - 8;
+            const bicepOriginY = 55;
+
+            // Tendón de origen (blanco aperlado fibroso)
+            ctx.strokeStyle = '#e2e8f0';
+            ctx.lineWidth = 7;
+            ctx.beginPath();
+            ctx.moveTo(bicepOriginX, bicepOriginY);
+            ctx.lineTo(bicepOriginX + 4, bicepOriginY + 22);
+            ctx.stroke();
+
+            // Tendón de inserción distal
+            ctx.beginPath();
+            ctx.moveTo(bicepInsertX, bicepInsertY);
+            ctx.lineTo(bicepInsertX - 6 * Math.cos(angleRad), bicepInsertY - 6 * Math.sin(angleRad) - 16);
+            ctx.stroke();
+
+            // MÚSCULO BÍCEPS BRAQUIAL ACTIVO (Vientre contráctil)
+            const bellyMidX = (bicepOriginX + bicepInsertX) / 2 - 14;
+            const bellyMidY = (bicepOriginY + 22 + bicepInsertY - 16) / 2;
+
+            // Sombra y resplandor de tensión activa
+            ctx.shadowColor = currentContractionMode === 'isometrica' ? 'rgba(234, 179, 8, 0.4)' : 'rgba(67, 102, 0, 0.35)';
+            ctx.shadowBlur = 12;
+
+            // Cuerpo del bíceps
+            ctx.fillStyle = currentContractionMode === 'isometrica' ? '#ca8a04' : '#436600';
+            ctx.strokeStyle = '#273c00';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(bicepOriginX + 4, bicepOriginY + 20);
+            ctx.quadraticCurveTo(bellyMidX - bicepBulge, bellyMidY, bicepInsertX, bicepInsertY - 10);
+            ctx.quadraticCurveTo(bellyMidX + bicepBulge * 0.7, bellyMidY, bicepOriginX + 8, bicepOriginY + 20);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.shadowBlur = 0; // reset
+
+            // Estrías de tensión sobre el músculo
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+            ctx.lineWidth = 1.8;
+            for (let s = -1; s <= 1; s++) {
+                ctx.beginPath();
+                ctx.moveTo(bellyMidX - bicepBulge * 0.5, bellyMidY + s * 10);
+                ctx.lineTo(bellyMidX + bicepBulge * 0.3, bellyMidY + s * 10 - 4);
+                ctx.stroke();
+            }
+
+            // VECTOR DE POTENCIA MUSCULAR (Fuerza del bíceps que tracciona hacia arriba)
+            const powerVectorLen = Math.min(65, 25 + (loadKg / 25) * 35);
+            ctx.strokeStyle = '#16a34a';
+            ctx.fillStyle = '#16a34a';
+            ctx.lineWidth = 3.5;
+            ctx.beginPath();
+            ctx.moveTo(bicepInsertX, bicepInsertY);
+            ctx.lineTo(bicepInsertX, bicepInsertY - powerVectorLen);
+            ctx.stroke();
+
+            // Punta flecha potencia
+            ctx.beginPath();
+            ctx.moveTo(bicepInsertX - 6, bicepInsertY - powerVectorLen + 8);
+            ctx.lineTo(bicepInsertX, bicepInsertY - powerVectorLen);
+            ctx.lineTo(bicepInsertX + 6, bicepInsertY - powerVectorLen + 8);
+            ctx.fill();
+
+            // Carga externa en la mano (Mancuerna / Resistencia R)
+            ctx.fillStyle = '#334155';
+            ctx.strokeStyle = '#0f172a';
+            ctx.lineWidth = 2;
+            // Eje mancuerna
+            ctx.beginPath();
+            ctx.roundRect(handX - 8, handY - 18, 16, 36, 4);
+            ctx.fill();
+            ctx.stroke();
+
+            // Discos de peso
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(handX - 14, handY - 24, 28, 8);
+            ctx.fillRect(handX - 14, handY + 16, 28, 8);
+
+            // VECTOR DE RESISTENCIA (Gravedad sobre la carga dirigida hacia abajo)
+            const resVectorLen = Math.min(70, 25 + (loadKg / 25) * 40);
+            ctx.strokeStyle = '#d97706';
+            ctx.fillStyle = '#d97706';
+            ctx.lineWidth = 3.5;
+            ctx.beginPath();
+            ctx.moveTo(handX, handY);
+            ctx.lineTo(handX, handY + resVectorLen);
+            ctx.stroke();
+
+            // Punta flecha resistencia
+            ctx.beginPath();
+            ctx.moveTo(handX - 6, handY + resVectorLen - 8);
+            ctx.lineTo(handX, handY + resVectorLen);
+            ctx.lineTo(handX + 6, handY + resVectorLen - 8);
+            ctx.fill();
+
+            // ARCO DE ÁNGULO ARTICULAR (Grados respecto a la vertical humeral)
+            const elbowAngleReal = Math.round(90 + currentAngleDeg);
+            ctx.strokeStyle = '#94a3b8';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.arc(elbowX, elbowY, 32, -Math.PI / 2, angleRad);
+            ctx.stroke();
+
+            // Telemetría biomecánica en vivo sobre el canvas
+            ctx.fillStyle = '#1e293b';
+            ctx.font = 'bold 12px Outfit, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText(`Ángulo Codo: ${elbowAngleReal}°`, w - 20, 28);
+
+            ctx.font = '11px Outfit, sans-serif';
+            ctx.fillStyle = '#16a34a';
+            ctx.fillText(`Potencia Muscular (F_m): ~` + (loadN * 5.2).toFixed(0) + ' N', w - 20, 46);
+
+            ctx.fillStyle = '#d97706';
+            ctx.fillText(`Resistencia Carga (R): ` + loadN.toFixed(0) + ' N', w - 20, 62);
+
+            // Indicador de palanca de 3.er Género (Interpotente: Fulcro - Potencia - Resistencia)
+            ctx.fillStyle = '#475569';
+            ctx.font = '10px Outfit, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Palanca de 3.° Género (Interpotente): F - P - R (Desventaja mecánica, gran amplitud)', 20, h - 12);
+        }
+
+        // =================================================================
+        // MÓDULO 3: ARQUITECTURA NEURONAL Y NEUROGLÍA
+        // =================================================================
+        function selectNeuronPart(part) {
+            currentNeuronPart = part;
+            ['soma', 'dendritas', 'axon', 'mielina'].forEach(p => {
+                const btn = document.getElementById(`btn-n-${p}`);
+                if (btn) {
+                    if (p === part) {
+                        btn.className = 'p-2.5 rounded-xl border-2 text-left font-bold transition bg-accent-light border-accent text-accent';
+                    } else {
+                        btn.className = 'p-2.5 rounded-xl border-2 text-left font-bold transition bg-white border-gray-200 text-gray-700 hover:border-gray-300';
+                    }
+                }
+            });
+
+            const title = document.getElementById('neuron-part-title');
+            const box = document.getElementById('neuron-detail-box');
+
+            if (part === 'soma') {
+                if (title) title.textContent = 'Soma / Cuerpo Celular';
+                if (box) box.innerHTML = `<strong class="text-accent block">Soma o Pericarion:</strong>
+                Centro metabólico y genético. Contiene el núcleo eucromático esférico con nucleolo evidente y citoplasma con abundantes <strong>corpúsculos de Nissl</strong> (retículo endoplásmico rugoso condensado para síntesis de neurotransmisores y proteínas citoesqueléticas). Su acumulación forma la <strong>sustancia gris</strong>.`;
+            } else if (part === 'dendritas') {
+                if (title) title.textContent = 'Dendritas (Aferencias Receptoras)';
+                if (box) box.innerHTML = `<strong class="text-accent block">Dendritas Receptoras:</strong>
+                Prolongaciones citoplasmáticas arborescentes cubiertas de <strong>espinas dendríticas</strong>. Su función principal es recibir señales aferentes de entrada provenientes de miles de sinapsis axónicas, canalizando los potenciales graduados hacia el cuerpo celular.`;
+            } else if (part === 'axon') {
+                if (title) title.textContent = 'Axón y Cono Axónico (Zona Gatillo)';
+                if (box) box.innerHTML = `<strong class="text-accent block">Axón y Cono Axónico:</strong>
+                Estructura cilíndrica única que nace en el <strong>cono axónico</strong> (zona con máxima concentración de canales de Na⁺ donde se integra el umbral para disparar el potencial de acción del todo o nada). Conduce eferentemente el impulso hacia los botones sinápticos distales.`;
+            } else {
+                if (title) title.textContent = 'Vaina de Mielina y Nodos de Ranvier';
+                if (box) box.innerHTML = `<strong class="text-accent block">Vaina de Mielina:</strong>
+                Aislante lipoproteico formado por <strong>células de Schwann</strong> (SNP) y <strong>oligodendrocitos</strong> (SNC). Interrumpido cada 1-2 mm por los <strong>nodos de Ranvier</strong>, que permiten la <strong>conducción saltatoria</strong> de alta velocidad (hasta 120 m/s en fibras motoras alfa).`;
+            }
+
+            drawNeuronaCanvas();
+        }
+
+        function triggerActionPotential() {
+            actionPotentialActive = true;
+            apProgress = 0;
+            const btn = document.getElementById('btn-ap-trigger');
+            if (btn) btn.innerHTML = '<i class="ph-bold ph-spinner animate-spin"></i> Transmitiendo Impulso...';
+        }
+
+        function toggleGliaView() {
+            showGliaOverlay = !showGliaOverlay;
+            const lbl = document.getElementById('label-glia-btn');
+            const btn = document.getElementById('btn-glia-toggle');
+            if (showGliaOverlay) {
+                if (lbl) lbl.textContent = 'Ocultar Neuroglía';
+                if (btn) btn.className = 'px-3 py-1 bg-accent text-white text-[11px] font-bold rounded-lg shadow-xs flex items-center gap-1 transition';
+            } else {
+                if (lbl) lbl.textContent = 'Mostrar Neuroglía';
+                if (btn) btn.className = 'px-3 py-1 bg-white hover:bg-gray-100 text-gray-700 border border-gray-300 text-[11px] font-bold rounded-lg shadow-xs flex items-center gap-1 transition';
+            }
+            drawNeuronaCanvas();
+        }
+
+        function drawNeuronaCanvas() {
+            const canvas = document.getElementById('canvas-neurona');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            // Fondo
+            ctx.fillStyle = '#f8fafc';
+            ctx.fillRect(0, 0, w, h);
+
+            const somaX = 100;
+            const somaY = h / 2;
+
+            // 1. DENDRITAS ARBORESCENTES CON ESPINAS
+            const isDendriteActive = currentNeuronPart === 'dendritas';
+            ctx.strokeStyle = isDendriteActive ? '#436600' : '#64748b';
+            ctx.lineWidth = isDendriteActive ? 3.5 : 2.2;
+            ctx.lineCap = 'round';
+
+            const branches = [
+                { start: [-24, -20], mid: [-55, -45], end: [-85, -60], sub: [-75, -80] },
+                { start: [-30, -5], mid: [-70, -15], end: [-95, -25], sub: [-90, 5] },
+                { start: [-28, 15], mid: [-65, 35], end: [-90, 55], sub: [-80, 75] },
+                { start: [-10, -28], mid: [-25, -65], end: [-45, -85], sub: [-15, -95] },
+                { start: [-8, 28], mid: [-20, 65], end: [-35, 85], sub: [-5, 95] },
+            ];
+
+            branches.forEach(b => {
+                ctx.beginPath();
+                ctx.moveTo(somaX + b.start[0], somaY + b.start[1]);
+                ctx.lineTo(somaX + b.mid[0], somaY + b.mid[1]);
+                ctx.lineTo(somaX + b.end[0], somaY + b.end[1]);
+                ctx.stroke();
+
+                // Sub-ramificación
+                ctx.beginPath();
+                ctx.moveTo(somaX + b.mid[0], somaY + b.mid[1]);
+                ctx.lineTo(somaX + b.sub[0], somaY + b.sub[1]);
+                ctx.stroke();
+
+                // Espinas dendríticas receptoras (pequeños brotes)
+                ctx.fillStyle = isDendriteActive ? '#436600' : '#94a3b8';
+                for (let s = 0.3; s <= 0.9; s += 0.3) {
+                    const sx = somaX + b.start[0] + (b.mid[0] - b.start[0]) * s;
+                    const sy = somaY + b.start[1] + (b.mid[1] - b.start[1]) * s;
+                    ctx.beginPath();
+                    ctx.arc(sx + 3, sy - 3, 2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            });
+
+            // 2. CONO AXÓNICO (Zona gatillo en el polo derecho del soma)
+            ctx.fillStyle = currentNeuronPart === 'axon' ? '#dcfce7' : '#e2e8f0';
+            ctx.beginPath();
+            ctx.moveTo(somaX + 22, somaY - 14);
+            ctx.lineTo(somaX + 48, somaY - 3);
+            ctx.lineTo(somaX + 48, somaY + 3);
+            ctx.lineTo(somaX + 22, somaY + 14);
+            ctx.closePath();
+            ctx.fill();
+
+            // 3. SOMA O CUERPO CELULAR ESTRELLADO
+            const isSomaActive = currentNeuronPart === 'soma';
+            ctx.fillStyle = isSomaActive ? '#f1f6eb' : '#ffffff';
+            ctx.strokeStyle = isSomaActive ? '#436600' : '#334155';
+            ctx.lineWidth = isSomaActive ? 3.5 : 2;
+
+            ctx.beginPath();
+            // Forma estrellada orgánica
+            ctx.arc(somaX, somaY, 32, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Corpúsculos de Nissl (gránulos morados condensados de RER)
+            ctx.fillStyle = '#7e22ce';
+            const nisslPoints = [
+                [-12, -10], [8, -12], [-14, 8], [6, 12], [-5, -18],
+                [14, -4], [-18, -2], [12, 6], [-8, 16], [3, 18]
+            ];
+            nisslPoints.forEach(pt => {
+                ctx.beginPath();
+                ctx.ellipse(somaX + pt[0], somaY + pt[1], 3, 1.8, Math.PI / 4, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Núcleo celular esférico claro
+            ctx.fillStyle = '#e0e7ff';
+            ctx.strokeStyle = '#6366f1';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.arc(somaX, somaY, 12, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Nucleolo central prominente
+            ctx.fillStyle = '#312e81';
+            ctx.beginPath();
+            ctx.arc(somaX + 2, somaY - 1, 4.5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 4. AXÓN CENTRAL Y VAINA DE MIELINA CON NODOS DE RANVIER
+            const axonEndX = w - 60;
+            const isAxonActive = currentNeuronPart === 'axon';
+            ctx.strokeStyle = isAxonActive ? '#436600' : '#475569';
+            ctx.lineWidth = isAxonActive ? 4 : 2.5;
+
+            // Filamento del axón que corre continuo por el centro
+            ctx.beginPath();
+            ctx.moveTo(somaX + 45, somaY);
+            ctx.lineTo(axonEndX, somaY);
+            ctx.stroke();
+
+            // Segmentos de Vaina de Mielina (Células de Schwann / Oligodendrocito)
+            const myelinCount = 4;
+            const segW = 58;
+            const gapW = 14; // Nodo de Ranvier
+            const startMyelinX = somaX + 54;
+
+            const isMyelinActive = currentNeuronPart === 'mielina';
+
+            for (let i = 0; i < myelinCount; i++) {
+                const mx = startMyelinX + i * (segW + gapW);
+
+                // Segmento de mielina (óvalo alargado lipídico)
+                ctx.fillStyle = isMyelinActive ? '#fef3c7' : '#e2e8f0';
+                ctx.strokeStyle = isMyelinActive ? '#d97706' : '#94a3b8';
+                ctx.lineWidth = isMyelinActive ? 2.5 : 1.5;
+
+                ctx.beginPath();
+                ctx.roundRect(mx, somaY - 14, segW, 28, 9);
+                ctx.fill();
+                ctx.stroke();
+
+                // Núcleo de la Célula de Schwann en la mielina
+                ctx.fillStyle = '#0284c7';
+                ctx.beginPath();
+                ctx.ellipse(mx + segW / 2, somaY - 9, 7, 3, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Nodo de Ranvier etiqueta / marcador
+                if (i < myelinCount - 1) {
+                    const nodeX = mx + segW + gapW / 2;
+                    ctx.strokeStyle = '#dc2626';
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.moveTo(nodeX, somaY - 16);
+                    ctx.lineTo(nodeX, somaY - 20);
+                    ctx.stroke();
+                }
+            }
+
+            // 5. TELEDENDRÓN Y BOTONES SINÁPTICOS TERMINALES
+            ctx.strokeStyle = isAxonActive ? '#436600' : '#475569';
+            ctx.lineWidth = 2.2;
+
+            const terminals = [-26, -10, 10, 26];
+            terminals.forEach(ty => {
+                ctx.beginPath();
+                ctx.moveTo(axonEndX, somaY);
+                ctx.lineTo(axonEndX + 22, somaY + ty);
+                ctx.stroke();
+
+                // Botón sináptico bulboso
+                ctx.fillStyle = '#dc2626';
+                ctx.beginPath();
+                ctx.arc(axonEndX + 24, somaY + ty, 4.5, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // 6. ANIMACIÓN DEL POTENCIAL DE ACCIÓN (CONDUCCIÓN SALTATORIA)
+            if (actionPotentialActive) {
+                // Progreso a lo largo del axón
+                const totalAxonDist = axonEndX - (somaX + 45);
+                const currentDist = (somaX + 45) + totalAxonDist * apProgress;
+
+                // Chispa de despolarización Na+
+                ctx.fillStyle = '#eab308';
+                ctx.shadowColor = '#eab308';
+                ctx.shadowBlur = 16;
+                ctx.beginPath();
+                ctx.arc(currentDist, somaY, 8, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Anillo de salto en los nodos de Ranvier
+                ctx.strokeStyle = '#f59e0b';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.arc(currentDist, somaY, 14, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.shadowBlur = 0; // reset
+            }
+
+            // 7. OVERLAY DE NEUROGLÍA (Astrocito y Microglía)
+            if (showGliaOverlay) {
+                // ASTROCITO con pies chupadores (pedicelos perivasculares) sobre capilar
+                const astX = 230;
+                const astY = 48;
+
+                // Vaso capilar cerebral arriba
+                ctx.fillStyle = '#fee2e2';
+                ctx.strokeStyle = '#ef4444';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.roundRect(140, 10, 190, 18, 6);
+                ctx.fill();
+                ctx.stroke();
+                ctx.fillStyle = '#991b1b';
+                ctx.font = 'bold 9px Outfit, sans-serif';
+                ctx.fillText('Capilar Sanguíneo (BHE)', 180, 23);
+
+                // Cuerpo del astrocito
+                ctx.fillStyle = '#38bdf8';
+                ctx.beginPath();
+                ctx.arc(astX, astY, 10, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Pedicelos hacia el capilar y hacia el axón
+                ctx.strokeStyle = '#0284c7';
+                ctx.lineWidth = 2;
+                // Pie hacia capilar
+                ctx.beginPath();
+                ctx.moveTo(astX - 4, astY - 8);
+                ctx.lineTo(astX - 25, 28);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(astX + 4, astY - 8);
+                ctx.lineTo(astX + 25, 28);
+                ctx.stroke();
+
+                // Pie hacia axón
+                ctx.beginPath();
+                ctx.moveTo(astX, astY + 10);
+                ctx.lineTo(astX, somaY - 15);
+                ctx.stroke();
+
+                // MICROGLÍA fagocítica patrullera abajo
+                const micX = 350;
+                const micY = 220;
+                ctx.fillStyle = '#ec4899';
+                ctx.beginPath();
+                ctx.arc(micX, micY, 7, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = '#db2777';
+                ctx.lineWidth = 1.2;
+                for (let a = 0; a < Math.PI * 2; a += 0.8) {
+                    ctx.beginPath();
+                    ctx.moveTo(micX, micY);
+                    ctx.lineTo(micX + 14 * Math.cos(a), micY + 14 * Math.sin(a));
+                    ctx.stroke();
+                }
+
+                ctx.fillStyle = '#0369a1';
+                ctx.font = 'bold 10px Outfit, sans-serif';
+                ctx.fillText('Astrocito (Barrera Hematoencefálica)', astX + 16, astY + 4);
+
+                ctx.fillStyle = '#be185d';
+                ctx.fillText('Microglía (Fagocitosis defensiva)', micX + 16, micY + 4);
+            }
+
+            // Leyenda pedagógica
+            ctx.fillStyle = '#64748b';
+            ctx.font = '10px Outfit, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Estructura Motoneurona: Dendritas | Soma (Nissl) | Cono axónico | Axón mielinizado | Nodos de Ranvier | Botones', 20, h - 10);
+        }
+
+        // =================================================================
+        // MÓDULO 4: SINAPSIS Y CONDUCCIÓN DEL IMPULSO
+        // =================================================================
+        function setSynapseType(type) {
+            currentSynapseType = type;
+            const btnQ = document.getElementById('btn-syn-quimica');
+            const btnE = document.getElementById('btn-syn-electrica');
+            const desc = document.getElementById('synapse-desc-box');
+
+            if (type === 'quimica') {
+                if (btnQ) btnQ.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-accent text-white shadow-sm transition';
+                if (btnE) btnE.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-gray-100 text-gray-700 hover:bg-gray-200 transition';
+                if (desc) desc.innerHTML = `<strong class="text-accent block text-sm">Sinapsis Química (Placa Motora / Unión Neuromuscular):</strong>
+                <p>1. El potencial de acción llega al terminal axónico y abre canales de <strong>Ca²⁺ dependientes de voltaje</strong>.<br>
+                2. El influjo de Ca²⁺ provoca la exocitosis de vesículas de <strong>acetilcolina (ACh)</strong> a la hendidura sináptica (20-50 nm).<br>
+                3. La ACh se une a receptores nicotínicos en los pliegues postsinápticos de la fibra muscular, abriendo canales de Na⁺ y disparando la contracción muscular.<br>
+                4. La enzima <strong>acetilcolinesterasa (AChE)</strong> degrada la ACh para permitir la relajación.</p>`;
+            } else {
+                if (btnE) btnE.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-accent text-white shadow-sm transition';
+                if (btnQ) btnQ.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-gray-100 text-gray-700 hover:bg-gray-200 transition';
+                if (desc) desc.innerHTML = `<strong class="text-accent block text-sm">Sinapsis Eléctrica (Uniones Comunicantes / Gap Junctions):</strong>
+                <p>Las membranas presináptica y postsináptica están unidas directamente por canales hexagonales llamados <strong>conexones</strong> (gap de apenas 2-4 nm). Los iones fluyen de forma bidireccional instantánea sin retraso químico (0.2 ms). Es la base del acoplamiento sincrónico del <strong>músculo cardíaco</strong> en los discos intercalares.</p>`;
+            }
+
+            synapseAnimating = false;
+            synapseParticles = [];
+            drawSinapsisCanvas();
+        }
+
+        function triggerSynapseAnimation() {
+            synapseAnimating = true;
+            synapseStep = 1;
+            synapseParticles = [];
+
+            const canvas = document.getElementById('canvas-sinapsis');
+            const w = canvas ? canvas.width : 520;
+
+            // Generar partículas de ACh para sinapsis química
+            if (currentSynapseType === 'quimica') {
+                for (let i = 0; i < 40; i++) {
+                    synapseParticles.push({
+                        x: w / 2 - 80 + Math.random() * 160,
+                        y: 110 + Math.random() * 15,
+                        vx: (Math.random() - 0.5) * 1.5,
+                        vy: 0.8 + Math.random() * 1.6,
+                        life: 1,
+                        type: 'ach'
+                    });
+                }
+            } else {
+                // Iones pasando por conexones en eléctrica
+                for (let i = 0; i < 30; i++) {
+                    synapseParticles.push({
+                        x: w / 2 - 120 + Math.random() * 240,
+                        y: 115,
+                        vx: (Math.random() - 0.5) * 0.8,
+                        vy: (Math.random() > 0.5 ? 1 : -1) * (1.2 + Math.random()),
+                        life: 1,
+                        type: 'ion'
+                    });
+                }
+            }
+        }
+
+        function updateAndDrawSynapseParticles() {
+            let activeCount = 0;
+            synapseParticles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.life -= 0.012;
+                if (p.life > 0) activeCount++;
+            });
+
+            drawSinapsisCanvas();
+
+            if (activeCount === 0) {
+                synapseAnimating = false;
+            }
+        }
+
+        function drawSinapsisCanvas() {
+            const canvas = document.getElementById('canvas-sinapsis');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            // Fondo de la estación sináptica
+            ctx.fillStyle = '#f8fafc';
+            ctx.fillRect(0, 0, w, h);
+
+            if (currentSynapseType === 'quimica') {
+                // 1. TERMINAL AXÓNICO PRESINÁPTICO (Botón de motoneurona arriba)
+                ctx.fillStyle = '#f1f5f9';
+                ctx.strokeStyle = '#475569';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(w / 2 - 150, 15);
+                ctx.lineTo(w / 2 - 150, 85);
+                ctx.bezierCurveTo(w / 2 - 110, 130, w / 2 + 110, 130, w / 2 + 150, 85);
+                ctx.lineTo(w / 2 + 150, 15);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                // Canales de Ca2+ voltaje dependientes en los bordes presinápticos
+                ctx.fillStyle = '#f59e0b';
+                ctx.strokeStyle = '#b45309';
+                ctx.lineWidth = 1.5;
+                [-120, -90, 90, 120].forEach(ox => {
+                    ctx.beginPath();
+                    ctx.roundRect(w / 2 + ox - 6, 96, 12, 10, 3);
+                    ctx.fill();
+                    ctx.stroke();
+                });
+
+                // Vesículas de Acetilcolina (ACh) en el interior del terminal
+                const baseVesicles = [
+                    { x: w / 2 - 70, y: 55 }, { x: w / 2 - 35, y: 50 }, { x: w / 2, y: 48 }, { x: w / 2 + 35, y: 50 }, { x: w / 2 + 70, y: 55 },
+                    { x: w / 2 - 50, y: 75 }, { x: w / 2 - 15, y: 72 }, { x: w / 2 + 20, y: 72 }, { x: w / 2 + 55, y: 75 },
+                    { x: w / 2 - 30, y: 95 }, { x: w / 2, y: 98 }, { x: w / 2 + 30, y: 95 }
+                ];
+
+                baseVesicles.forEach(v => {
+                    ctx.fillStyle = '#22c55e';
+                    ctx.strokeStyle = '#15803d';
+                    ctx.lineWidth = 1.2;
+                    ctx.beginPath();
+                    ctx.arc(v.x, v.y, 6.5, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.stroke();
+
+                    // Puntos internos de ACh
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath();
+                    ctx.arc(v.x - 1.5, v.y - 1.5, 1.5, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // Rótulo Presináptico
+                ctx.fillStyle = '#334155';
+                ctx.font = 'bold 11px Outfit, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('Botón Terminal Presináptico (Motoneurona Alfa)', w / 2, 32);
+
+                // 2. MEMBRANA POSTSINÁPTICA CON PLIEGUES SUBNEURALES (Placa Motora Sarcolema)
+                const postY = 175;
+                ctx.fillStyle = '#fee2e2';
+                ctx.strokeStyle = '#dc2626';
+                ctx.lineWidth = 2.5;
+
+                ctx.beginPath();
+                ctx.moveTo(w / 2 - 170, postY);
+                for (let x = w / 2 - 170; x <= w / 2 + 170; x += 34) {
+                    ctx.lineTo(x + 10, postY);
+                    ctx.lineTo(x + 17, postY + 24); // Fondo del pliegue de unión
+                    ctx.lineTo(x + 25, postY + 24);
+                    ctx.lineTo(x + 32, postY);
+                }
+                ctx.lineTo(w / 2 + 170, h - 15);
+                ctx.lineTo(w / 2 - 170, h - 15);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                // Receptores Nicotínicos de ACh (Crestas de los pliegues postsinápticos - Azul)
+                ctx.fillStyle = '#2563eb';
+                for (let x = w / 2 - 170; x <= w / 2 + 150; x += 34) {
+                    ctx.beginPath();
+                    ctx.arc(x + 5, postY - 2, 3.5, 0, Math.PI * 2);
+                    ctx.arc(x + 30, postY - 2, 3.5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // Canales de Na+ voltaje-dependientes en la profundidad del pliegue (Púrpura)
+                ctx.fillStyle = '#9333ea';
+                for (let x = w / 2 - 170; x <= w / 2 + 150; x += 34) {
+                    ctx.fillRect(x + 18, postY + 20, 6, 4);
+                }
+
+                // HENDIDURA SINÁPTICA (Espacio de 20-50 nm)
+                ctx.fillStyle = '#64748b';
+                ctx.font = '10px Outfit, sans-serif';
+                ctx.textAlign = 'left';
+                ctx.fillText('Hendidura Sináptica (~20-50 nm)', 25, 155);
+
+                // Partículas dinámicas de ACh
+                if (synapseAnimating && synapseParticles.length > 0) {
+                    synapseParticles.forEach(p => {
+                        if (p.life > 0) {
+                            ctx.fillStyle = `rgba(34, 197, 94, ${p.life})`;
+                            ctx.beginPath();
+                            ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+                    });
+                }
+
+                // Rótulo Postsináptico
+                ctx.fillStyle = '#991b1b';
+                ctx.font = 'bold 11px Outfit, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('Placa Motora Muscular (Pliegues de unión con Receptores nAChR y Canales de Na⁺)', w / 2, h - 25);
+
+            } else {
+                // SINAPSIS ELÉCTRICA: Hendidura estrecha (2-4 nm) con conexones alineados
+                const midY = h / 2 - 10;
+
+                // Membrana superior (célula 1)
+                ctx.fillStyle = '#fce7f3';
+                ctx.strokeStyle = '#db2777';
+                ctx.lineWidth = 2.5;
+                ctx.beginPath();
+                ctx.roundRect(w / 2 - 170, 30, 340, midY - 35, 8);
+                ctx.fill();
+                ctx.stroke();
+
+                // Membrana inferior (célula 2)
+                ctx.beginPath();
+                ctx.roundRect(w / 2 - 170, midY + 12, 340, midY - 35, 8);
+                ctx.fill();
+                ctx.stroke();
+
+                // CONEXONES (Canales de unión comunicante gap que acoplan citoplasmas)
+                const connexonCount = 9;
+                for (let i = 0; i < connexonCount; i++) {
+                    const cx = w / 2 - 130 + i * 32;
+
+                    // Cilindro del conexón uniendo ambas membranas
+                    ctx.fillStyle = '#0284c7';
+                    ctx.strokeStyle = '#0369a1';
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.roundRect(cx - 7, midY - 10, 14, 26, 4);
+                    ctx.fill();
+                    ctx.stroke();
+
+                    // Poro acuoso central continuo
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(cx - 2.5, midY - 8, 5, 22);
+                }
+
+                // Partículas de iones fluyendo a través de conexones
+                if (synapseAnimating && synapseParticles.length > 0) {
+                    synapseParticles.forEach(p => {
+                        if (p.life > 0) {
+                            ctx.fillStyle = `rgba(14, 165, 233, ${p.life})`;
+                            ctx.beginPath();
+                            ctx.arc(p.x, p.y, 3.5, 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+                    });
+                }
+
+                ctx.fillStyle = '#be185d';
+                ctx.font = 'bold 12px Outfit, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('Sinapsis Eléctrica: Flujo Iónico Directo e Instantáneo (Conexones)', w / 2, 50);
+
+                ctx.fillStyle = '#0369a1';
+                ctx.font = '10px Outfit, sans-serif';
+                ctx.fillText('Gap estrecho (2-4 nm) | Conexones (hexámeros de conexinas) | Sincitio eléctrico miocárdico', w / 2, h - 25);
+            }
+        }
+
+        // =================================================================
+        // MÓDULO 5: CASOS CLÍNICOS KINESIOLÓGICOS APLICADOS
+        // =================================================================
+        function checkCase(caseNum, optionSelected) {
+            const feed = document.getElementById(`feedback-c${caseNum}`);
+            if (!feed) return;
+
+            feed.classList.remove('hidden');
+
+            if (caseNum === 1) {
+                if (optionSelected === 'A') {
+                    feed.className = 'mt-4 p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800';
+                    feed.innerHTML = '<strong>Incorrecto:</strong> La contracción isométrica mantiene estática la longitud del músculo sin desplazar la carga.';
+                } else if (optionSelected === 'B') {
+                    feed.className = 'mt-4 p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800';
+                    feed.innerHTML = '<strong>¡Correcto!</strong> En la fase de descenso controlado, el cuádriceps se alarga mientras sostiene y frena el peso corporal contra la gravedad. Esto corresponde rigurosamente a una <strong>contracción isotónica excéntrica</strong>.';
+                } else {
+                    feed.className = 'mt-4 p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800';
+                    feed.innerHTML = '<strong>Incorrecto:</strong> En la fase concéntrica el cuádriceps se acorta para elevar el cuerpo (subir escalón), no para descenderlo.';
+                }
+            } else if (caseNum === 2) {
+                if (optionSelected === 'A') {
+                    feed.className = 'mt-4 p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800';
+                    feed.innerHTML = '<strong>Incorrecto:</strong> Los astrocitos no mielinizan los nervios periféricos ni el ciático, sino que forman la barrera hematoencefálica en el SNC.';
+                } else if (optionSelected === 'B') {
+                    feed.className = 'mt-4 p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800';
+                    feed.innerHTML = '<strong>¡Correcto!</strong> El nervio ciático pertenece al Sistema Nervioso Periférico (SNP). En el SNP, la vaina de mielina es producida individualmente por las <strong>células de Schwann</strong>, cuya integridad es indispensable para la conducción saltatoria y la velocidad del reflejo.';
+                } else {
+                    feed.className = 'mt-4 p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800';
+                    feed.innerHTML = '<strong>Incorrecto:</strong> Los oligodendrocitos sintetizan la mielina exclusivamente en el Sistema Nervioso Central (médula y encéfalo), no en los nervios periféricos.';
+                }
+            } else if (caseNum === 3) {
+                if (optionSelected === 'A') {
+                    feed.className = 'mt-4 p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800';
+                    feed.innerHTML = '<strong>Incorrecto:</strong> La noradrenalina es el neurotransmisor simpático en órganos diana, no en la placa motora somática voluntaria.';
+                } else if (optionSelected === 'B') {
+                    feed.className = 'mt-4 p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800';
+                    feed.innerHTML = '<strong>¡Correcto!</strong> La unión neuromuscular esquinada es una sinapsis química mediada por <strong>acetilcolina (ACh)</strong>. En la miastenia gravis, los anticuerpos destruyen los receptores nicotínicos de ACh en la membrana postsináptica, provocando fatiga y debilidad muscular progresiva.';
+                } else {
+                    feed.className = 'mt-4 p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800';
+                    feed.innerHTML = '<strong>Incorrecto:</strong> El GABA es el principal neurotransmisor inhibidor del sistema nervioso central, no actúa en la placa motora esquelética.';
+                }
+            }
+        }
+
+        // =================================================================
+        // INICIALIZACIÓN
+        // =================================================================
+        window.addEventListener('DOMContentLoaded', () => {
+            selectMuscleType('esqueletico');
+            setContractionMode('concentrica');
+            selectNeuronPart('soma');
+            setSynapseType('quimica');
+            switchTab('tab-muscular');
+            animationLoop();
+        });
+</script>
+</body>
+</html>
